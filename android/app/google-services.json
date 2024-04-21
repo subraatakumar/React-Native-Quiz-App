@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "910724556823",
+    "project_id": "react-native-quiz-app-1",
+    "storage_bucket": "react-native-quiz-app-1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:910724556823:android:890c25299a70a49779d452",
+        "android_client_info": {
+          "package_name": "com.quiz_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "910724556823-mnhcl7b42fdp97emi56no7ichbnl71cb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.quiz_app",
+            "certificate_hash": "ccaab0836e2076ef9429ec2420b090a72e5a6dcb"
+          }
+        },
+        {
+          "client_id": "910724556823-8gdn2624m25c00g8okelo551kh8tgop2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9L3oOko8Ela5JQCHSLDDRn-qzdn11QJ0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "910724556823-8gdn2624m25c00g8okelo551kh8tgop2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "910724556823-osvt6nvudql4skg6ck7pilv0jqnrvtr3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.quiz-app"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
