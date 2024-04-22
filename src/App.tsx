@@ -5,13 +5,19 @@ import {Provider as StoreProvider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
 import {persistor, store} from './redux/store';
 import ProductList from './screens/ProductList';
+import DrawerExample from './examples/DrawerExample';
+import MyTopTabs from './examples/TopTagExample';
+import MyBottomTabs from './examples/BottomTabExample';
 
 const App = () => {
   return (
     <SafeAreaView style={{flex: 1}}>
-      <AuthScreen />
+      {/* <AuthScreen /> */}
       {/* Uncomment below productlist component to check createAsyncThunk */}
       {/* <ProductList />  */}
+      {/* <DrawerExample /> */}
+      {/* <MyTopTabs /> */}
+      <MyBottomTabs />
     </SafeAreaView>
   );
 };
