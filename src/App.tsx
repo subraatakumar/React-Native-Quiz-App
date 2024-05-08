@@ -8,17 +8,21 @@ import ProductList from './screens/ProductList';
 import DrawerExample from './examples/DrawerExample';
 import MyTopTabs from './examples/TopTagExample';
 import MyBottomTabs from './examples/BottomTabExample';
+import MultipleErrorDisplay from '@components/error_display/MultipleErrorDisplay';
+import ErrorProvider from '@components/error_display/ErrorDisplay';
 
 const App = () => {
   return (
-    <SafeAreaView style={{flex: 1}}>
-      {/* <AuthScreen /> */}
-      {/* Uncomment below productlist component to check createAsyncThunk */}
-      {/* <ProductList />  */}
-      {/* <DrawerExample /> */}
-      {/* <MyTopTabs /> */}
-      <MyBottomTabs />
-    </SafeAreaView>
+    <ErrorProvider>
+      <SafeAreaView style={{flex: 1}}>
+        <AuthScreen />
+        {/* Uncomment below productlist component to check createAsyncThunk */}
+        {/* <ProductList />  */}
+        {/* <DrawerExample /> */}
+        {/* <MyTopTabs /> */}
+        {/* <MyBottomTabs /> */}
+      </SafeAreaView>
+    </ErrorProvider>
   );
 };
 

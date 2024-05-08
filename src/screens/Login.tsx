@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {View, StyleSheet} from 'react-native';
 import {TextInput, Button, Text} from 'react-native-paper';
 import {Ionicons} from '@expo/vector-icons';
@@ -6,6 +6,7 @@ import {useDispatch} from 'react-redux';
 import {useAppDispatch, useAppSelector} from '../redux/store';
 import {emailSignup} from '../redux/thunks/emailSignup';
 import {emailSignin} from '../redux/thunks/emailSignin';
+import {useErrorContext} from '@components/error_display/ErrorDisplay';
 
 const LoginScreen = ({setIsLogin}) => {
   const [email, setEmail] = useState('');
@@ -76,13 +77,17 @@ const SignupScreen = ({setIsLogin}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useAppDispatch();
+  const {addErrorText} = useErrorContext();
   const {user, loading, error} = useAppSelector(state => state.auth);
   console.log('user: ', user, ' loading ', loading, ' error ', error);
   const handleSignup = () => {
     // Handle signup logic here
-    dispatch(emailSignup(email, password));
+    dispatch(emailSignup(email, password, addErrorText));
     console.log('Signing up...');
   };
+  useEffect(() => {
+    addErrorText('Error 1');
+  }, []);
 
   return (
     <View style={styles.container}>
