@@ -7,11 +7,13 @@ import {useAppDispatch, useAppSelector} from '../redux/store';
 import {emailSignup} from '../redux/thunks/emailSignup';
 import {emailSignin} from '../redux/thunks/emailSignin';
 import {useErrorContext} from '@components/error_display/ErrorDisplay';
+import {useNavigation} from '@react-navigation/native';
 
-const LoginScreen = ({setIsLogin}) => {
+export const LoginScreen = ({setIsLogin}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useAppDispatch();
+  const navigation = useNavigation();
   const {user, loading, error} = useAppSelector(state => state.auth);
   console.log('user: ', user, ' loading ', loading, ' error ', error);
 
@@ -20,6 +22,13 @@ const LoginScreen = ({setIsLogin}) => {
     dispatch(emailSignin(email, password));
     console.log('Logging in...');
   };
+
+  useEffect(() => {
+    console.log('user: ', user);
+    if (user) {
+      navigation.navigate('Home');
+    }
+  }, [user]);
 
   return (
     <View style={styles.container}>
@@ -73,11 +82,12 @@ const LoginScreen = ({setIsLogin}) => {
   );
 };
 
-const SignupScreen = ({setIsLogin}) => {
+export const SignupScreen = ({setIsLogin}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useAppDispatch();
-  const {addErrorText} = useErrorContext();
+  const navigation = useNavigation();
+  const {addErrorText, addSuccessText} = useErrorContext();
   const {user, loading, error} = useAppSelector(state => state.auth);
   console.log('user: ', user, ' loading ', loading, ' error ', error);
   const handleSignup = () => {
@@ -87,7 +97,16 @@ const SignupScreen = ({setIsLogin}) => {
   };
   useEffect(() => {
     addErrorText('Error 1');
+    addErrorText('Error 2');
+    addSuccessText('Success Message 1');
   }, []);
+
+  useEffect(() => {
+    console.log('user: ', user);
+    if (user) {
+      navigation.navigate('Home');
+    }
+  }, [user]);
 
   return (
     <View style={styles.container}>

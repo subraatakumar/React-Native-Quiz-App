@@ -10,19 +10,23 @@ import MyTopTabs from './examples/TopTagExample';
 import MyBottomTabs from './examples/BottomTabExample';
 import MultipleErrorDisplay from '@components/error_display/MultipleErrorDisplay';
 import ErrorProvider from '@components/error_display/ErrorDisplay';
-
+import LoadingModalProvider from '@components/loading_display/LoadingDisplay';
+import MainNavigator from './navigator/MainNavigator';
 const App = () => {
   return (
-    <ErrorProvider>
-      <SafeAreaView style={{flex: 1}}>
-        <AuthScreen />
-        {/* Uncomment below productlist component to check createAsyncThunk */}
-        {/* <ProductList />  */}
-        {/* <DrawerExample /> */}
-        {/* <MyTopTabs /> */}
-        {/* <MyBottomTabs /> */}
-      </SafeAreaView>
-    </ErrorProvider>
+    <LoadingModalProvider>
+      <ErrorProvider>
+        <SafeAreaView style={{flex: 1}}>
+          {/* <AuthScreen /> */}
+          {/* Uncomment below productlist component to check createAsyncThunk */}
+          {/* <ProductList />  */}
+          {/* <DrawerExample /> */}
+          {/* <MyTopTabs /> */}
+          {/* <MyBottomTabs /> */}
+          <MainNavigator />
+        </SafeAreaView>
+      </ErrorProvider>
+    </LoadingModalProvider>
   );
 };
 

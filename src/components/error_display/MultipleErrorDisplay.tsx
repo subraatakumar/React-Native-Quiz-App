@@ -1,15 +1,21 @@
 import {View, Text} from 'react-native';
 import React, {useCallback, useEffect} from 'react';
 import ErrorDisplayContainer from './ErrorDisplayContainer';
-import {useAppSelector} from '@redux/store';
+import {ErrorTextType} from './ErrorDisplayTypes';
 
-const MultipleErrorDisplay = props => {
+type MultipleErrorDisplayType = {
+  data: ErrorTextType[];
+  setData: (data: ErrorTextType[]) => void;
+  bottom: number;
+};
+const MultipleErrorDisplay = (props: MultipleErrorDisplayType) => {
   const {data, bottom} = props;
+  console.log('Errors: ', data);
   return (
     <>
       {data &&
         data.length > 0 &&
-        data.map((singleData, index) => (
+        data.map((singleData: ErrorTextType, index: number) => (
           <ErrorDisplayContainer
             key={index + '' + Date.now()}
             errorText={singleData?.errorText || ''}

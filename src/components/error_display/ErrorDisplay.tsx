@@ -13,6 +13,16 @@ const ErrorProvider: React.FC<{children: ReactNode}> = ({children}) => {
     const newError: ErrorTextType = {
       id: Date.now(),
       errorText: text,
+      success: false,
+      timeStamp: Date.now(),
+    };
+    setErrorTexts(prev => [...prev, newError]);
+  };
+  const addSuccessText = (text: string) => {
+    const newError: ErrorTextType = {
+      id: Date.now(),
+      errorText: text,
+      success: true,
       timeStamp: Date.now(),
     };
     setErrorTexts([...errorTexts, newError]);
@@ -27,6 +37,7 @@ const ErrorProvider: React.FC<{children: ReactNode}> = ({children}) => {
       value={{
         errorTexts,
         addErrorText,
+        addSuccessText,
         removeErrorText,
         errorBottom,
         setErrorBottom,

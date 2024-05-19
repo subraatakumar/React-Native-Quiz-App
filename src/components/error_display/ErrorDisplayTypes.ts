@@ -1,4 +1,5 @@
 export type addErrorTextType = (text: string) => void;
+export type addSuccessTextType = (text: string) => void;
 export type removeErrorTextType = (text: string) => void;
 export type ErrorTextType = {
   id: number;
@@ -10,6 +11,7 @@ export type ErrorTextType = {
 export type ErrorContextType = {
   errorTexts: ErrorTextType[];
   addErrorText: addErrorTextType;
+  addSuccessText: addSuccessTextType;
   removeErrorText: removeErrorTextType;
   errorBottom: number;
   setErrorBottom: (no: number) => void;

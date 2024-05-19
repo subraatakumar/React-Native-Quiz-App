@@ -2,7 +2,7 @@ import {View, Text, StyleSheet, Modal, Pressable, Image} from 'react-native';
 import React, {useEffect} from 'react';
 import {useErrorContext} from './ErrorDisplay';
 
-const ErrorDisplayComponent = props => {
+const ErrorDisplayComponent = (props: any) => {
   const {timeStamp, errorText, success} = props;
   const {removeErrorText} = useErrorContext();
   console.log(
@@ -14,7 +14,7 @@ const ErrorDisplayComponent = props => {
     removeErrorText(props?.errorText || '');
   };
   useEffect(() => {
-    const delay = 10000000; // 10 seconds
+    const delay = 10000; // 10 seconds
     const timeElapsed = Date.now() - timeStamp;
     const remainingDelay = Math.max(0, delay - timeElapsed);
 
