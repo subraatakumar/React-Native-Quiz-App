@@ -4,6 +4,7 @@ import {persistStore, persistReducer} from 'redux-persist';
 import productSlice from './slices/productSlice';
 import {TypedUseSelectorHook, useDispatch, useSelector} from 'react-redux';
 import authSlice from './slices/authSlice';
+import errorSlice from './slices/errorSlice';
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
@@ -14,6 +15,7 @@ const persistConfig = {
 const reducers = combineReducers({
   products: productSlice,
   auth: authSlice,
+  error: errorSlice,
 });
 
 const persistedReducer = persistReducer(persistConfig, reducers);

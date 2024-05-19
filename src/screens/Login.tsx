@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {View, StyleSheet} from 'react-native';
 import {TextInput, Button, Text} from 'react-native-paper';
 import {Ionicons} from '@expo/vector-icons';
@@ -6,11 +6,15 @@ import {useDispatch} from 'react-redux';
 import {useAppDispatch, useAppSelector} from '../redux/store';
 import {emailSignup} from '../redux/thunks/emailSignup';
 import {emailSignin} from '../redux/thunks/emailSignin';
+import {useErrorContext} from '@components/error_display/ErrorDisplay';
+import {useNavigation} from '@react-navigation/native';
+import {useLoadingModalContext} from '@components/loading_display/LoadingDisplay';
 
-const LoginScreen = ({setIsLogin}) => {
+export const LoginScreen = ({setIsLogin}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useAppDispatch();
+  const navigation = useNavigation();
   const {user, loading, error} = useAppSelector(state => state.auth);
   console.log('user: ', user, ' loading ', loading, ' error ', error);
 
@@ -19,6 +23,13 @@ const LoginScreen = ({setIsLogin}) => {
     dispatch(emailSignin(email, password));
     console.log('Logging in...');
   };
+
+  useEffect(() => {
+    console.log('user: ', user);
+    if (user) {
+      navigation.navigate('Home');
+    }
+  }, [user]);
 
   return (
     <View style={styles.container}>
@@ -72,17 +83,27 @@ const LoginScreen = ({setIsLogin}) => {
   );
 };
 
-const SignupScreen = ({setIsLogin}) => {
+export const SignupScreen = ({setIsLogin}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useAppDispatch();
+  const navigation = useNavigation();
+  const {addErrorText, addSuccessText} = useErrorContext();
+  const {addLoadingDialog, removeLoadingDialog} = useLoadingModalContext();
   const {user, loading, error} = useAppSelector(state => state.auth);
   console.log('user: ', user, ' loading ', loading, ' error ', error);
   const handleSignup = () => {
     // Handle signup logic here
-    dispatch(emailSignup(email, password));
+    dispatch(emailSignup(email, password, addErrorText));
     console.log('Signing up...');
   };
+
+  useEffect(() => {
+    console.log('user: ', user);
+    if (user) {
+      navigation.navigate('Home');
+    }
+  }, [user]);
 
   return (
     <View style={styles.container}>
