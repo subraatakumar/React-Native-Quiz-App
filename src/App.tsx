@@ -1,14 +1,8 @@
-import {View, Text, SafeAreaView} from 'react-native';
+import {SafeAreaView} from 'react-native';
 import React from 'react';
-import AuthScreen from './screens/Login';
 import {Provider as StoreProvider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
 import {persistor, store} from './redux/store';
-import ProductList from './screens/ProductList';
-import DrawerExample from './examples/DrawerExample';
-import MyTopTabs from './examples/TopTagExample';
-import MyBottomTabs from './examples/BottomTabExample';
-import MultipleErrorDisplay from '@components/error_display/MultipleErrorDisplay';
 import ErrorProvider from '@components/error_display/ErrorDisplay';
 import LoadingModalProvider from '@components/loading_display/LoadingDisplay';
 import MainNavigator from './navigator/MainNavigator';

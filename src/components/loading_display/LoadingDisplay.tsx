@@ -1,5 +1,6 @@
 import React, {createContext, useContext, useState, ReactNode} from 'react';
 import {LoadingDialogDataType} from './LoadingDialogTypes';
+import LoadingDialog from './LoadingDialog';
 
 type LoadingModalContextType = {
   loadingDialogTexts: LoadingDialogDataType[];
@@ -21,6 +22,7 @@ const LoadingModalProvider: React.FC<{children: ReactNode}> = ({children}) => {
       Object.keys(data).includes('id') &&
       Object.keys(data).includes('loadingDialogText')
     ) {
+      console.log('setting loading dialog text:', data);
       setLoadingDialogTexts(prev => [...prev, data]);
     }
   };
@@ -37,11 +39,13 @@ const LoadingModalProvider: React.FC<{children: ReactNode}> = ({children}) => {
         removeLoadingDialog,
       }}>
       {children}
+      <LoadingDialog {...loadingDialogTexts[0]} />
     </LoadingModalContext.Provider>
   );
 };
 
 export default LoadingModalProvider;
+
 export const useLoadingModalContext = (): LoadingModalContextType => {
   const context = useContext(LoadingModalContext);
   if (!context) {

@@ -1,7 +1,6 @@
 import {View, Text, Modal, Pressable, StyleSheet} from 'react-native';
 import React from 'react';
 import {ActivityIndicator} from 'react-native';
-import Text17_700_bold from '@components/Text17_700_bold';
 
 const LoadingDialog = props => {
   return (
@@ -15,15 +14,13 @@ const LoadingDialog = props => {
       <Pressable style={styles.container}>
         <View style={styles.dialog}>
           <ActivityIndicator
-            size="large"
-            color="#07A69C"
+            size={props?.indicatorSize || 'large'}
+            color={props?.indicatorColor || 'rgba(0,0,0,0.5)'}
             style={{transform: [{scaleX: 1.5}, {scaleY: 1.5}]}}
           />
-          <View>
-            <Text17_700_bold
-              title={props?.loadingDialogText || 'Please wait...'}
-            />
-          </View>
+          <Text style={[{color: 'rgba(0,0,0,0.5)'}, props?.textStyle]}>
+            {props?.loadingDialogText || 'Please wait...'}
+          </Text>
         </View>
       </Pressable>
     </Modal>

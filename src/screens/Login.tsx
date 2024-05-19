@@ -8,6 +8,7 @@ import {emailSignup} from '../redux/thunks/emailSignup';
 import {emailSignin} from '../redux/thunks/emailSignin';
 import {useErrorContext} from '@components/error_display/ErrorDisplay';
 import {useNavigation} from '@react-navigation/native';
+import {useLoadingModalContext} from '@components/loading_display/LoadingDisplay';
 
 export const LoginScreen = ({setIsLogin}) => {
   const [email, setEmail] = useState('');
@@ -88,6 +89,7 @@ export const SignupScreen = ({setIsLogin}) => {
   const dispatch = useAppDispatch();
   const navigation = useNavigation();
   const {addErrorText, addSuccessText} = useErrorContext();
+  const {addLoadingDialog, removeLoadingDialog} = useLoadingModalContext();
   const {user, loading, error} = useAppSelector(state => state.auth);
   console.log('user: ', user, ' loading ', loading, ' error ', error);
   const handleSignup = () => {
@@ -95,11 +97,6 @@ export const SignupScreen = ({setIsLogin}) => {
     dispatch(emailSignup(email, password, addErrorText));
     console.log('Signing up...');
   };
-  useEffect(() => {
-    addErrorText('Error 1');
-    addErrorText('Error 2');
-    addSuccessText('Success Message 1');
-  }, []);
 
   useEffect(() => {
     console.log('user: ', user);
